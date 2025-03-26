@@ -54,7 +54,3 @@ output public_ip {
 output public_dns {
   value = aws_instance.test.public_dns
 }
-
-output instance_type {
-  value = aws_instance.test.instance_type
-}

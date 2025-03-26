@@ -34,13 +34,9 @@ data "aws_ami" "amazon2" {
   owners = ["137112412989"] # Amazon
 }
 
-variable instance_type {
-  default = "t2.micro"
-}
-
 resource "aws_instance" "test" {
   ami           = data.aws_ami.amazon2.id
-  instance_type = "${var.instance_type}"
+  instance_type = "t3.xlarge"
 
   tags = {
     Name = "Test"

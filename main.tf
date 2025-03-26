@@ -40,7 +40,7 @@ variable instance_type {
 
 resource "aws_instance" "test" {
   ami           = data.aws_ami.amazon2.id
-  instance_type = var.instance_type.id
+  instance_type = ${var.instance_type.id}
 
   tags = {
     Name = "Test"

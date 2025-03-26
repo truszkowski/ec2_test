@@ -34,11 +34,23 @@ data "aws_ami" "amazon2" {
   owners = ["137112412989"] # Amazon
 }
 
+variable instance_type {
+  default = "t2.micro"
+}
+
 resource "aws_instance" "test" {
   ami           = data.aws_ami.amazon2.id
-  instance_type = "t3.nano"
+  instance_type = "${var.instance_type}"
 
   tags = {
     Name = "Test"
   }
+}
+
+output public_ip {
+  value = aws_instance.test.public_ip
+}
+
+output public_dns {
+  value = aws_instance.test.public_dns
 }
